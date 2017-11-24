@@ -20,6 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MAX_BRIGHTNESS 15
 #define MAX_BRIGHTNESS_IOS 5  // max brightness suitable for iOS devices
 
+
 #define _BL 0
 #define _FN1 1
 #define _FN2 2
@@ -28,36 +29,39 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define _FN5 5
 #define _____ KC_TRNS
 
+LEADER_EXTERNS();
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    [_BL] = KEYMAP(
-     LT(1, KC_ESC),     KC_Q,       KC_W,       KC_E,     LT(4,KC_R),     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_BSPC,
-     LT(3, KC_TAB),     KC_A,       KC_S,       KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_ENT,
-     OSM(MOD_LSFT),    KC_Z,       KC_X,       KC_C,     KC_V,     KC_B,     LT(2, KC_N),     LT(5, KC_M),     KC_COMM,  KC_DOT,    RSFT_T(KC_SLSH),
-     CTL_T(KC_SCLN),    KC_LALT,    KC_LGUI,         _____,         KC_SPC,        _____,                   MO(_FN1), MO(_FN3)
+     LT(3, KC_ESC),     KC_Q,       KC_W,       KC_E,     LT(4,KC_R),     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_BSPC,
+     KC_TAB,     KC_A,       KC_S,       KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_ENT,
+     OSM(MOD_LSFT),    KC_Z,       KC_X,       KC_C,     KC_V,     KC_B,     LT(2, KC_N),     LT(5, KC_M),     KC_COMM,  KC_DOT,    MO(1),
+     CTL_T(KC_SCLN),    KC_LALT,    KC_LGUI,         _____,         KC_SPC,        _____,                   KC_LBRC, KC_LEAD
    ),
    [_FN1] = KEYMAP(
-     _____,      _____,      KC_UP,      _____,    _____,    KC_AMPR,    KC_ASTR,    KC_PIPE,    KC_COLN,    KC_EXLM,    _____,    KC_GRV,
-     _____,      KC_LEFT,    KC_DOWN,    KC_RIGHT,    _____,    KC_LBRC,    KC_LPRN,    KC_LCBR,    KC_EQL,    KC_MINS,    KC_SCLN,
-     _____,      _____,       _____,      _____,    _____,    _____,    _____,    _____,    _____,    KC_SLSH,    KC_SLSH,
+     _____,      KC_LCBR,      KC_RCBR,      KC_EQL,    KC_PIPE,    KC_AMPR,    KC_ASTR,    KC_PIPE,    KC_COLN,    KC_EXLM,    _____,    _____,
+     _____,      KC_LPRN,    KC_RPRN,    KC_GRV,    _____,    _____,    _____,    _____,    KC_QUOT,    KC_SCLN,    _____,
+     _____,      KC_LBRC,       KC_RBRC,      KC_MINS,    _____,    _____,    _____,    _____,    _____,    KC_SLSH,    _____,
      _____,      _____,      _____,            _____,        _____,         _____,                   _____,    _____
    ),
    [_FN2] = KEYMAP(
-     _____,    KC_1,      KC_2,      KC_3,      KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   _____,
-     _____,      M(3),       M(4),       M(5),     _____,    _____,    _____,    _____,    _____,    _____,    _____,
-     _____,      M(6),       _____,      _____,    _____,    _____,    _____,    _____,    _____,    _____,    _____,
-     _____,      _____,      _____,            _____,        _____,         _____,                   _____,    _____
+     _____,      KC_7,    KC_8,    KC_9,    _____,    _____,    _____,    _____,    _____,    _____,    _____,    _____,
+     _____,      KC_4,    KC_5,    KC_6,    _____,    _____,    _____,    _____,    _____,    _____,    _____,
+     _____,      KC_1,    KC_2,    KC_3,    _____,    _____,    _____,    _____,    _____,    _____,    RSFT_T(KC_DOT),
+     _____,      KC_0,      _____,          _____,    _____,    _____,    _____,    _____
    ),
    [_FN3] = KEYMAP(
-     _____,      _____,      KC_UP,      _____,    _____,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_DEL,
-     _____,      KC_LEFT,    KC_DOWN,    KC_RIGHT, _____,    _____,    _____,    _____,    _____,    _____,    KC_QUOT,
-     _____,      M(6),       _____,      _____,    _____,    _____,    _____,    _____,    _____,    _____,    _____,
-     _____,      _____,      _____,            _____,        _____,         _____,                   _____,    _____
+     _____,      _____,      _____,      _____,    _____,    _____,    _____,    _____,    _____,    _____,    _____,   _____,
+     _____,      _____,    _____,    _____, _____,    _____,    KC_LEFT,    KC_DOWN,    KC_UP,    KC_RIGHT,    _____,
+     _____,      _____,       _____,      _____,    _____,    _____,    _____,    _____,    _____,    _____,    KC_RSHIFT,
+     _____,      _____,      _____,            _____,        KC_ENT,         _____,                   _____,    _____
    ),
    [_FN4] = KEYMAP(
      _____,      _____,      _____,      _____,    _____,    _____,    _____,    _____,    _____,    _____,    _____,    _____,
      _____,      _____,      _____,      _____,    _____,    _____,    _____,    _____,    _____,    _____,    RESET,
      _____,      _____,      _____,      KC_CAPS,    _____,    _____,    _____,    _____,    _____,    _____,    _____,
-     _____,      _____,      _____,            _____,        _____,         _____,                   _____,    _____
+     _____,      _____,      _____,            _____,        _____,         _____,                   _____,    M(7)
    ),
    [_FN5] = KEYMAP(
      _____,      _____,      KC_MS_UP,      _____,    _____,    _____,    _____,    _____,    KC_ACL0,    KC_ACL1,  KC_ACL2,    _____,
@@ -78,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 uint8_t current_level = 4;
-int is_on = 0;
+int is_on = 1;
 
 uint8_t r = 0xFF;
 uint8_t g = 0xFF;
@@ -93,7 +97,8 @@ enum macro_id {
   COLOR_1,
   COLOR_2,
   COLOR_3,
-  ENABLE_MAX_BRIGHTNESS
+  ENABLE_MAX_BRIGHTNESS,
+  SCREENSHOT
 };
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
@@ -145,6 +150,17 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
         max_brightness = MAX_BRIGHTNESS;
       }
       break;
+    case SCREENSHOT:
+      if (event.pressed) {
+        register_code(KC_LGUI);
+        register_code(KC_RSHIFT);
+        register_code(KC_9);
+        unregister_code(KC_LGUI);
+        unregister_code(KC_RSHIFT);
+        unregister_code(KC_9);
+      }else{
+
+      }
   }
 
   return MACRO_NONE;
@@ -165,10 +181,29 @@ void user_setrgb(uint8_t r, uint8_t g, uint8_t b) {
 }
 
 void matrix_scan_user(void) {
+  LEADER_DICTIONARY() {
+    leading = false;
+    leader_end();
+
+    // for three-key sequences
+    SEQ_TWO_KEYS(KC_DOT, KC_DOT) {
+      register_code(KC_RSHIFT);
+      register_code(KC_DOT);
+      unregister_code(KC_RSHIFT);
+      unregister_code(KC_DOT);
+  }
+    SEQ_TWO_KEYS(KC_COMM, KC_COMM) {
+      register_code(KC_RSHIFT);
+      register_code(KC_COMM);
+      unregister_code(KC_RSHIFT);
+      unregister_code(KC_COMM);
+  }
+
   if (!is_on) {
     current_level = 0;
     user_setrgb(r, g, b);
   } else {
     user_setrgb(r, g, b);
   }
+}
 }
